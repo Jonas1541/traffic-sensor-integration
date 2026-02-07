@@ -36,7 +36,10 @@ public class App {
             int speed = sensor.readSpeed(id);
             
             long duration = System.nanoTime() - start;
-            System.out.printf("[SUCESSO] Velocidade: %d km/h (Latência: %d ns)\n\n", speed, duration);
+
+            double durationNs = duration / 1_000_000.0;
+
+            System.out.printf("[SUCESSO] Velocidade: %d km/h (Latência: %.4f ms)\n\n", speed, durationNs);
             
         } catch (Exception e) {
             System.err.println("[ERRO] Falha no driver: " + e.getMessage());
